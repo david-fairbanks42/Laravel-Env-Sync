@@ -8,7 +8,6 @@
 namespace Jtant\LaravelEnvSync\Reader\File;
 
 use Dotenv\Dotenv;
-use Dotenv\Environment\DotenvFactory;
 use Jtant\LaravelEnvSync\Reader\ReaderInterface;
 
 class EnvFileReader implements ReaderInterface
@@ -36,6 +35,6 @@ class EnvFileReader implements ReaderInterface
             $name = basename($resource);
         }
 
-        return Dotenv::createImmutable($dir, $name)->load();
+        return Dotenv::createArrayBacked($dir, $name)->load();
     }
 }
